@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gorder & TheGorder Store</title>
+    <title>Store - Gorder & TheGorder</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -21,64 +21,80 @@
             box-shadow: 0 0 20px #d4af37;
         }
         .product {
-            margin-bottom: 30px;
+            margin: 20px 0;
         }
-        .product img {
+        img {
             width: 200px;
             border-radius: 10px;
+            box-shadow: 0 0 10px #d4af37;
+            transition: all 0.3s ease-in-out;
+        }
+        img:hover {
+            box-shadow: 0 0 20px white;
+            transform: scale(1.05);
+        }
+        select, .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.3s ease-in-out;
         }
         .button {
             background-color: #d4af37;
             color: #0b0b0b;
-            padding: 10px 20px;
-            text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transform: perspective(1px) scale(1);
         }
         .button:hover {
             background-color: #b89e30;
-        }
-        select {
-            padding: 5px;
-            margin-top: 10px;
+            box-shadow: 0 0 15px white;
+            transform: rotateX(360deg);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Gorder & TheGorder Store</h1>
+        <h1>Order Your Masonic Ring</h1>
         
         <div class="product">
-            <img src="product-image-140904777_480x.jpg" alt="Ring Style 1">
-            <p>Elegant Masonic Ring - Style 1</p>
-            <label for="size1">Select Size:</label>
-            <select id="size1">
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-            </select>
-            <br>
-            <a href="#" class="button">Buy Now</a>
+            <h2>Style 1 (Silver)</h2>
+            <img src="product-image-140904777_480x.jpg" alt="Silver Masonic Ring">
         </div>
         
         <div class="product">
-            <img src="product-image-140904800_480x.jpg" alt="Ring Style 2">
-            <p>Elegant Masonic Ring - Style 2</p>
-            <label for="size2">Select Size:</label>
-            <select id="size2">
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-            </select>
-            <br>
-            <a href="#" class="button">Buy Now</a>
+            <h2>Style 2 (Gold)</h2>
+            <img src="product-image-140904800_480x.jpg" alt="Gold Masonic Ring">
         </div>
+
+        <p><strong>There is a way to earn your ring free of charge.</strong></p>
+        <p>Use the chain of command to get more information on how to qualify.</p>
+
+        <form action="submit_order.php" method="post">
+            <label for="style">Choose a Style:</label>
+            <select id="style" name="style">
+                <option value="silver">Style 1 (Silver)</option>
+                <option value="gold">Style 2 (Gold)</option>
+            </select>
+
+            <label for="size">Choose a Size:</label>
+            <select id="size" name="size">
+                <option value="8">Size 8</option>
+                <option value="9">Size 9</option>
+                <option value="10">Size 10</option>
+                <option value="11">Size 11</option>
+                <option value="12">Size 12</option>
+                <option value="13">Size 13</option>
+            </select>
+
+            <button type="submit" class="button">Request Order Form Through Chain of Command</button>
+        </form>
     </div>
 </body>
 </html>
+
