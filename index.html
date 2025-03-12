@@ -13,12 +13,17 @@
             padding: 50px;
             position: relative;
         }
+        .top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
         .top-right {
             position: absolute;
             top: 20px;
             right: 20px;
         }
-        .top-right a {
+        .top-left a, .top-right a {
             color: #d4af37;
             text-decoration: none;
             font-weight: bold;
@@ -28,7 +33,7 @@
             border-radius: 5px;
             transition: background 0.3s ease-in-out;
         }
-        .top-right a:hover {
+        .top-left a:hover, .top-right a:hover {
             background: rgba(212, 175, 55, 0.5);
         }
         .container {
@@ -63,6 +68,10 @@
 </head>
 <body>
 
+    <div class="top-left">
+        <a href="perksandbenefits.html">Perks & Benefits</a>
+    </div>
+
     <div class="top-right">
         <a href="login.html">Login</a>
     </div>
@@ -70,18 +79,19 @@
     <div class="container">
         <img src="TheGorder.jpg" alt="Gorder & TheGorder Logo" style="width: 150px; margin-bottom: 20px;">
         <h1>Welcome to Gorder & TheGorder</h1>
-        <p>Educating, advocating, and sponsoring Masonic education for the youth.(Youn Adults)
+        <p>Educating, advocating, and sponsoring Masonic education for the youth (Young Adults).  
            We operate independently and are not affiliated with any official Masonic body.</p>
         <a href="learnmore.html" class="button">Learn More</a>
-        <p>We support the development of programming and coding skills through hands-on learning, 
+        <p>We support the development of programming and coding skills through hands-on learning,  
            encouraging individuals to build their knowledge without reliance on AI assistance.</p>
         <a href="store.html" class="button">Visit Our Store</a>
-        <p>In alignment with Masonic teachings, we believe the purpose of life is to evolve— 
+        <p>In alignment with Masonic teachings, we believe the purpose of life is to evolve—  
            to refine our character, seek wisdom, and contribute to the greater good.</p>
     </div>
 
 </body>
 </html>
+
 
 
 
