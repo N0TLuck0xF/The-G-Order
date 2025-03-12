@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheGorder - Private Membership Login</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #0b0b0b;
+            color: #d4af37;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #d4af37;
+        }
+        input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+        }
+        .button {
+            background-color: #d4af37;
+            color: #0b0b0b;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+        .button:hover {
+            background-color: #b89e30;
+            box-shadow: 0 0 15px white;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TheGorder Private Login</h1>
+        <p><strong>Invite-Only Private Membership Association</strong></p>
+        <p>Membership is granted by vote of existing members.</p>
+        <form action="login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit" class="button">Login</button>
+        </form>
+        <p class="note">If you want to join please contact a member and you can be voted in. We are invite only.</p>
+    </div>
+</body>
+</html>
