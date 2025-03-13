@@ -4,109 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheGorder - Login</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            background-color: #0b0b0b;
-            color: #d4af37;
-            text-align: center;
-            padding: 50px;
+    <script>
+        async function login(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                localStorage.setItem("token", data.token);
+                window.location.href = "/dashboard";
+            } else {
+                alert(data.error);
+            }
         }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #d4af37;
-        }
-        input {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: none;
-            text-align: center;
-        }
-        .button {
-            background-color: #d4af37;
-            color: #0b0b0b;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 10px;
-            width: 80%;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: none;
-            transition: all 0.3s ease-in-out;
-        }
-        .button:hover {
-            background-color: #b89e30;
-            box-shadow: 0 0 15px white;
-        }
-        .note {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #bbb;
-        }
-        #errorMessage {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-    </style>
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>TheGorder Private Login</h1>
-        <p><strong>Invite-Only Private Membership Association</strong></p>
-        <p>Membership is granted by vote of existing members.</p>
-        
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit" class="button">Login</button>
-            <p id="errorMessage"></p>
-        </form>
-
-        <p class="note">If you want to join, please contact a member and you can be voted in. We are invite-only.</p>
-    </div>
-
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-            let errorMessage = document.getElementById("errorMessage");
-
-            try {
-                let response = await fetch('http://localhost:3000/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-
-                let data = await response.json();
-
-                if (data.success) {
-                    localStorage.setItem("loggedInUser", username);
-                    window.location.href = "dashboard.html";
-                } else {
-                    errorMessage.textContent = "❌ Invalid Username or Password!";
-                }
-            } catch (error) {
-                errorMessage.textContent = "❌ Server error. Try again later.";
-            }
-        });
-    </script>
+    <h1>Login</h1>
+    <form onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
+
 

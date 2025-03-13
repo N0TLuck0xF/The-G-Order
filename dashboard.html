@@ -3,155 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheGorder Dashboard</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            background-color: #0b0b0b;
-            color: #d4af37;
-            text-align: center;
-            padding: 20px;
+    <title>TheGorder - Dashboard</title>
+    <script>
+        async function checkAuth() {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                window.location.href = "/";
+                return;
+            }
+
+            // Fetch user data if needed
         }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #d4af37;
-        }
-        h1, h2 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.5;
-        }
-        .banner {
-            background-color: #b12727;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .section {
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 8px;
-            background: rgba(255, 215, 0, 0.1);
-            box-shadow: 0 0 10px #d4af37;
-        }
-        .progress-bar {
-            width: 100%;
-            background: #222;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .progress-fill {
-            height: 20px;
-            background: #d4af37;
-            text-align: center;
-            line-height: 20px;
-            color: black;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-        .button {
-            display: inline-block;
-            background: #d4af37;
-            color: #0b0b0b;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .button:hover {
-            background: #b89e30;
-        }
-        .list {
-            text-align: left;
-            padding-left: 20px;
-        }
-        .airdrop-box {
-            background: #222;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-    </style>
+
+        window.onload = checkAuth;
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>🏆 TheGorder Member Dashboard</h1>
-        
-        <!-- 🚀 Testnet Banner -->
-        <div class="banner">
-            🚀 TheGorder is in Testnet Mode – No Payouts or Withdrawals Until Revenue Picks Up!
-        </div>
+    <h1>Welcome to TheGorder Dashboard</h1>
+    <p>This is a private members-only area.</p>
+    <button onclick="logout()">Logout</button>
 
-        <!-- 🌍 Group Trip Funding -->
-        <div class="section">
-            <h2>🌍 Group Trip Fund Tracker</h2>
-            <p>All funds go toward trips. The next group trip is scheduled soon!</p>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 40%;">$8,000 / $20,000 Raised</div>
-            </div>
-        </div>
-
-        <!-- 📊 Governance Voting System -->
-        <div class="section">
-            <h2>📊 Governance Voting</h2>
-            <p>Vote on important decisions for TheGorder community.</p>
-            <button class="button">View Current Votes</button>
-        </div>
-
-        <!-- 🏆 WebOG XP System -->
-        <div class="section">
-            <h2>🏆 WebOG XP & Achievements</h2>
-            <p>Track XP, download XP certificates, and earn ranks.</p>
-            <button class="button">Download XP Certificate</button>
-        </div>
-
-        <!-- 📥 Airdrops & Asset Portfolio -->
-        <div class="section">
-            <h2>📥 Airdrops & Asset Portfolio</h2>
-            <div class="airdrop-box">
-                <p>🔥 100 WebOG XP Airdropped! (March 10, 2025)</p>
-                <button class="button">Claim Now</button>
-            </div>
-            <div class="airdrop-box">
-                <p>🎁 50 Gorder Tokens Airdropped! (Feb 28, 2025)</p>
-                <button class="button">Claim Now</button>
-            </div>
-        </div>
-
-        <!-- 📅 Upcoming Events & News -->
-        <div class="section">
-            <h2>📅 Upcoming Events & News</h2>
-            <ul class="list">
-                <li>✔️ March 15 – TheGorder Game Night (Twitch Live)</li>
-                <li>✔️ March 20 – Crypto & Stock Trading Workshop</li>
-                <li>✔️ April 5 – Group Fundraising Event</li>
-            </ul>
-        </div>
-
-        <!-- 💰 Earnings Overview -->
-        <div class="section">
-            <h2>💰 Earnings & Revenue Streams</h2>
-            <p>TheGorder earns revenue through:</p>
-            <ul class="list">
-                <li>✔️ Gaming & IRL YouTube Channels</li>
-                <li>✔️ Twitch, Kick, and TikTok Live Streaming</li>
-                <li>✔️ Freelance Development & Custom OS Phones</li>
-                <li>✔️ Airdrop Monetization & Crowdfunding</li>
-            </ul>
-        </div>
-
-        <p>🚀 More features coming soon!</p>
-        <a href="index.html" class="button">Back to Home</a>
-    </div>
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+        }
+    </script>
 </body>
 </html>
