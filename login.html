@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheGorder - Private Membership Login</title>
+    <title>TheGorder - Login</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -52,6 +52,11 @@
             font-size: 0.9em;
             color: #bbb;
         }
+        #errorMessage {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +64,8 @@
         <h1>TheGorder Private Login</h1>
         <p><strong>Invite-Only Private Membership Association</strong></p>
         <p>Membership is granted by vote of existing members.</p>
-        <form action="login.php" method="post">
+        
+        <form id="loginForm">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             
@@ -67,8 +73,40 @@
             <input type="password" id="password" name="password" required>
             
             <button type="submit" class="button">Login</button>
+            <p id="errorMessage"></p>
         </form>
-        <p class="note">If you want to join please contact a member and you can be voted in. We are invite only.</p>
+
+        <p class="note">If you want to join, please contact a member and you can be voted in. We are invite-only.</p>
     </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let errorMessage = document.getElementById("errorMessage");
+
+            try {
+                let response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                let data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem("loggedInUser", username);
+                    window.location.href = "dashboard.html";
+                } else {
+                    errorMessage.textContent = "❌ Invalid Username or Password!";
+                }
+            } catch (error) {
+                errorMessage.textContent = "❌ Server error. Try again later.";
+            }
+        });
+    </script>
 </body>
 </html>
+
